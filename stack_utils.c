@@ -63,7 +63,6 @@ void	clean_stack(t_list *node)
 	if (node == NULL)
 		return ;
 	tmp = node->prev;
-	printf("prev = %s\n", tmp);
 	while (node)
 	{
 		next = node->next;
@@ -72,7 +71,6 @@ void	clean_stack(t_list *node)
 	}
 	while (tmp)
 	{
-		printf("NOOOOO");
 		prev = tmp->prev;
 		free(tmp);
 		tmp = prev;

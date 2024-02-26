@@ -40,6 +40,20 @@ void	ft_error(t_list *stack_a)
 	exit(EXIT_FAILURE);
 }
 
+void	free_split(char **first_arg)
+{
+	int	i;
+
+	i = 0;
+	while (first_arg[i])
+	{
+		free(first_arg[i]);
+		i++;
+	}
+	free(first_arg[i]);
+	free(first_arg);
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
@@ -72,18 +86,11 @@ int	main(int ac, char **av)
 			i--;
 		}
 	}
-	// push_swap(stack_a, stack_b);
-	//printf("before %p\n", stack_a);
 
-	print_stack(stack_a);
-	printf("\n\n\n");
-	stack_a = get_first_node(stack_a);
-	print_stack(stack_a);
-	stack_b = get_first_node(stack_b);
+
+	free_split(first_arg);
 	clean_stack(stack_a);
-	printf("AAAAAA\n\n\n");
-	// print_stack(stack_a);
-	//clean_stack(stack_b);
+	clean_stack(stack_b);
 	system("leaks a.out");
 
 	return (0);

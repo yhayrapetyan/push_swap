@@ -52,6 +52,7 @@ void	swap(t_list *stack);
 void	push(t_list **from, t_list **to);
 void	rotate(t_list **stack, int reversed);
 void	execute(t_list *stack_a, t_list *stack_b, char *command);
+void	free_split(char **str);
 
 
 #endif
