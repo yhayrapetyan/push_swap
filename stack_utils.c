@@ -63,6 +63,7 @@ void	clean_stack(t_list *node)
 	if (node == NULL)
 		return ;
 	tmp = node->prev;
+	printf("prev = %s\n", tmp);
 	while (node)
 	{
 		next = node->next;
@@ -71,9 +72,10 @@ void	clean_stack(t_list *node)
 	}
 	while (tmp)
 	{
-		prev = node->prev;
-		free(node);
-		node = prev;
+		printf("NOOOOO");
+		prev = tmp->prev;
+		free(tmp);
+		tmp = prev;
 	}
 }
 
@@ -81,7 +83,7 @@ t_list	*get_first_node(t_list *node)
 {
 	if (node == NULL)
 		return (NULL);
-	while (node->prev)
+	while (node->prev != NULL)
 		node = node->prev;
 	return (node);
 }
@@ -92,5 +94,5 @@ t_list	*get_last_node(t_list *node)
 		return (NULL);
 	while (node->next)
 		node = node->next;
-	return (node);
+	return node;
 }

@@ -4,10 +4,16 @@ void	print_stack(t_list *stack)
 {
 	int	i;
 
-	stack = get_first_node(stack);
+	// stack = get_first_node(stack);
 	while (stack)
 	{
 		i = 0;
+		// printf("%d", stack->content);
+		if (stack->content < 0)
+		{
+			stack->content *= -1;
+			printf("minus");
+		}
 		while (i < stack->content)
 		{
 			printf("*");

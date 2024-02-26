@@ -12,94 +12,103 @@
 
 #include "push_swap.h"
 
-void	swap(t_list *stack)
+void	sort_for3(t_list *stack_a, t_list *stack_b)
 {
+	return ;
+}
+
+void sort_for5(t_list *stack_a, t_list *stack_b)
+{
+	return ;
+}
+
+int	*sort_arr(int *arr, int n)
+{
+	int	i;
+	int	j;
 	int	tmp;
 
-	stack = get_first_node(stack);
-	if (stack == NULL || stack->next == NULL)
-		return ;
-	tmp = stack->content;
-	stack->content = stack->next->content;
-	stack->next->content = tmp;
-}
-
-void	push(t_list **from, t_list **to)
-{
-	if (from == NULL || to == NULL)
-		return ;
-	*from = get_last_node(*from);
-	*to = get_last_node(*to);
-	if (*from == NULL)
-		return ;
-	*to = add_node(*to, (*from)->content);
-
-}
-
-void	rotate(t_list **stack, int reversed)
-{
-	t_list	*tmp;
-
-	*stack = get_first_node(*stack);
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return ;
-	tmp = *stack;
-	if (!reversed)
+	i = 0;
+	while (i < n)
 	{
-		*stack = (*stack)->next;
-		(*stack)->prev = NULL;
-		tmp->prev = get_last_node(*stack);
-		get_last_node(*stack)->next = tmp;
-		tmp->next = NULL;
+		j = 0;
+		while (j < n)
+		{
+			if (arr[j] > arr[i])
+			{
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+			j++;
+		}
+		i++;
 	}
+	return (arr);
+}
+
+void	selection_sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len)
+{
+
+}
+
+void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len)
+{
+	int	i;
+	int	step;
+
+	step = 1;
+	if (arr_len > 500)
+		step = 3;
+	else if (arr_len > 300)
+		step = 2;
+	i = 0;
+	while (stack_a && i + step < arr_len)
+	{
+		if (stack_a->content > arr[i] || stack_a->content > arr[i + step])
+		{
+			execute(stack_a, stack_b, "pb");
+			if (stack_a->content > arr[i])
+				execute(stack_a, stack_b, "rb");
+			i++;
+		}
+		stack_a = stack_a->next;
+	}
+	print_stack(stack_b);
+
+}
+
+
+void	push_swap(t_list *stack_a, t_list *stack_b)
+{
+	int	*sorted_arr;
+	int	i;
+	int	len;
+
+	stack_a = get_first_node(stack_a);
+	len = stack_len(stack_a);
+	sorted_arr = (int *)malloc(sizeof(int) * len);
+	if (!sorted_arr)
+		return ;
+	i = 0;
+	while (i < len)
+	{
+		sorted_arr[i] = stack_a->content;
+		i++;
+		stack_a = stack_a->next;
+	}
+	sorted_arr = sort_arr(sorted_arr, len);
+	i = 0;
+	stack_a = get_first_node(stack_a);
+	printf("AAAAAAA\n");
+	free(sorted_arr);
+	return ;
+	if (is_sorted(stack_a))
+		return ;
+	if (len <= 3)
+		sort_for3(stack_a, stack_b);
+	else if (len <= 5)
+		sort_for5(stack_a, stack_b);
 	else
-	{
-		*stack = get_last_node(*stack);
-		(*stack)->prev->next = NULL;
-		(*stack)->prev = NULL;
-		(*stack)->next = tmp;
-		tmp->prev = *stack;
-	}
+		sort(stack_a, stack_b, sorted_arr, len);
 }
-
-void	execute(t_list *stack_a, t_list *stack_b, char *command)
-{
-	if (ft_strcmp(command, "sa"))
-		swap(stack_a);
-	else if (ft_strcmp(command, "sb"))
-		swap(stack_b);
-	else if (ft_strcmp(command, "ss"))
-	{
-		swap(stack_a);
-		swap(stack_b);
-	}
-	else if (ft_strcmp(command, "pa"))
-		push(&stack_a, &stack_b);
-	else if (ft_strcmp(command, "pb"))
-		push(&stack_b, &stack_a);
-	else if (ft_strcmp(command, "ra"))
-		rotate (&stack_a, 0);
-	else if (ft_strcmp(command, "rb"))
-		rotate (&stack_b, 0);
-	else if(ft_strcmp(command, "rr"))
-	{
-		rotate (&stack_a, 0);
-		rotate(&stack_b, 0);
-	}
-	else if (ft_strcmp(command, "rra"))
-		rotate (&stack_a, 1);
-	else if (ft_strcmp(command, "rrb"))
-		rotate (&stack_b, 1);
-	else if(ft_strcmp(command, "rrr"))
-	{
-		rotate (&stack_a, 1);
-		rotate(&stack_b, 1);
-	}
-}
-
-// void	push_swap(t_list *stack_a, t_list *stack_b)
-// {
-// 	stack_a = get_first_node(stack_a);
-// 	if (is_sorted(stack_a))
-// 		return ;
-// }

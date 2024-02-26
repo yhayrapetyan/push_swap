@@ -32,11 +32,26 @@ t_list	*add_node(t_list *node, int content);
 
 void	print_stack(t_list *stack);
 int		is_sorted(t_list *stack);
-// void	push_swap(t_list *stack_a, t_list *stack_b);
+void	push_swap(t_list *stack_a, t_list *stack_b);
+int		ft_strcmp(const char *s1, const char *s2);
+int		is_valid_input(char *str);
 
 void	swap(t_list *stack);
 void	push(t_list **stack_a, t_list **stack_b);
 int		ft_strcmp(const char *s1, const char *s2);
 void	rotate(t_list **stack, int reversed);
+char	**ft_split(char const *s, char c);
+
+void	sort_for3(t_list *stack_a, t_list *stack_b);
+void	sort_for5(t_list *stack_a, t_list *stack_b);
+int		*sort_arr(int *arr, int n);
+void	selection_sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
+void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
+void	push_swap(t_list *stack_a, t_list *stack_b);
+void	swap(t_list *stack);
+void	push(t_list **from, t_list **to);
+void	rotate(t_list **stack, int reversed);
+void	execute(t_list *stack_a, t_list *stack_b, char *command);
+
 
 #endif
