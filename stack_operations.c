@@ -30,25 +30,42 @@ void	swap(t_list **stack)
 	(*stack)->prev = tmp;
 }
 
-void	push(t_list **from, t_list **to)
+void	push(t_list **stack_from, t_list **stack_to)
 {
 	t_list	*tmp;
 
-	if (from == NULL || to == NULL)
+	if (stack_from == NULL || *stack_from == NULL)
 		return ;
-	if (*from == NULL)
-		return ;
-	*from = get_first_node(*from);
-	*to = get_last_node(*to);
-	*to = add_node(*to, (*from)->content);
-	tmp = (*from)->next;
-	(*from)->next = NULL;
-	if (tmp)
+	*stack_from = get_first_node(*stack_from);
+	*stack_to = get_last_node(*stack_to);
+	tmp = (*stack_from)->next;
+	if (tmp != NULL)
 		tmp->prev = NULL;
-	free(*from);
-	*from = NULL;
-	print_stack(*from);
+	(*stack_from)->next = *stack_to;
+	if (*stack_to != NULL)
+		(*stack_to)->prev = *stack_from;
+	*stack_to = *stack_from;
+	*stack_from = tmp;
+	return ;
 }
+
+// void	push(t_list **from, t_list **to)
+// {
+// 	t_list	*tmp;
+
+// 	if (from == NULL || to == NULL)
+// 		return ;
+// 	if (*from == NULL)
+// 		return ;
+// 	*from = get_first_node(*from);
+// 	*to = get_last_node(*to);
+// 	*to = add_node(*to, (*from)->content);
+// 	tmp = (*from);
+// 	(*from) = (*from)->next;
+// 	// if (tmp)
+// 	// 	tmp->next = NULL;
+// 	free(tmp);
+// }
 
 void	rotate(t_list **stack, int reversed)
 {

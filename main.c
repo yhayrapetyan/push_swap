@@ -90,7 +90,7 @@ int	main(int ac, char **av)
 		j++;
 	}
 	//push_swap(stack_a, stack_b);
-	stack_b = create_node(0);
+	//stack_b = create_node(0);
 	// stack_b = add_node(stack_b, 0);
 
 	print_2stacks(stack_a, stack_b);
@@ -99,6 +99,7 @@ int	main(int ac, char **av)
 	//execute(&stack_a, &stack_b, "pb");
 	// execute(stack_a, stack_b, "pa");
 	printf("a = %p\n", stack_a);
+	// stack_a = get_first_node(stack_a);
 	printf("\n\n");
 	print_2stacks(stack_a, stack_b);
 

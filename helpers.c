@@ -26,11 +26,6 @@ void	print_stack(t_list *stack)
 
 void	print_2stacks(t_list *stack_a, t_list *stack_b)
 {
-	if (!stack_a)
-	{
-		printf("STACK A = NULL");
-		return ;
-	}
 	stack_a = get_first_node(stack_a);
 	stack_b = get_first_node(stack_b);
 	printf("=~=~==~==~==~==~==~==~==~==~==~==~==~==~==~==~=~\n");
