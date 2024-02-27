@@ -67,8 +67,6 @@ void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len)
 	{
 		if (stack_a->content > arr[i] || stack_a->content > arr[i + step])
 		{
-			if (!stack_b)
-				stack_b = create_node(0);
 			execute(&stack_a, &stack_b, "pa");
 			if (stack_a->content > arr[i])
 				execute(&stack_a, &stack_b, "rb");

@@ -37,7 +37,7 @@ void	push(t_list **stack_from, t_list **stack_to)
 	if (stack_from == NULL || *stack_from == NULL)
 		return ;
 	*stack_from = get_first_node(*stack_from);
-	*stack_to = get_last_node(*stack_to);
+	*stack_to = get_first_node(*stack_to);
 	tmp = (*stack_from)->next;
 	if (tmp != NULL)
 		tmp->prev = NULL;
@@ -114,15 +114,12 @@ void	execute(t_list **stack_a, t_list **stack_b, char *command)
 	else if (ft_strcmp(command, "pa") == 0)
 	{
 		printf("pa\n");
-		printf("before exec a = %p\n", *stack_a);
 		push(stack_a, stack_b);
-		printf("after exec a = %p\n", *stack_a);
 	}
 	else if (ft_strcmp(command, "pb") == 0)
 	{
 		printf("pb\n");
 		push(stack_b, stack_a);
-		printf("after exec a = %p\n", stack_a);
 	}
 	else if (ft_strcmp(command, "ra") == 0)
 	{
