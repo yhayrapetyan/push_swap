@@ -12,28 +12,42 @@
 
 #include "push_swap.h"
 
-void	swap(t_list *stack)
+void	swap(t_list **stack)
 {
-	int	tmp;
+	t_list	*tmp;
 
-	stack = get_first_node(stack);
-	if (stack == NULL || stack->next == NULL)
+	if (stack == NULL || *stack == NULL)
 		return ;
-	tmp = stack->content;
-	stack->content = stack->next->content;
-	stack->next->content = tmp;
+	*stack = get_first_node(*stack);
+	if ((*stack)->next == NULL)
+		return ;
+	tmp = (*stack)->next;
+	(*stack)->next = tmp->next;
+	if (tmp->next != NULL)
+		tmp->next->prev = *stack;
+	tmp->next = *stack;
+	tmp->prev = NULL;
+	(*stack)->prev = tmp;
 }
 
 void	push(t_list **from, t_list **to)
 {
+	t_list	*tmp;
+
 	if (from == NULL || to == NULL)
 		return ;
-	*from = get_last_node(*from);
-	*to = get_last_node(*to);
 	if (*from == NULL)
 		return ;
+	*from = get_first_node(*from);
+	*to = get_last_node(*to);
 	*to = add_node(*to, (*from)->content);
-
+	tmp = (*from)->next;
+	(*from)->next = NULL;
+	if (tmp)
+		tmp->prev = NULL;
+	free(*from);
+	*from = NULL;
+	print_stack(*from);
 }
 
 void	rotate(t_list **stack, int reversed)
@@ -62,37 +76,67 @@ void	rotate(t_list **stack, int reversed)
 	}
 }
 
-void	execute(t_list *stack_a, t_list *stack_b, char *command)
+void	execute(t_list **stack_a, t_list **stack_b, char *command)
 {
-	if (ft_strcmp(command, "sa"))
-		swap(stack_a);
-	else if (ft_strcmp(command, "sb"))
-		swap(stack_b);
-	else if (ft_strcmp(command, "ss"))
+	if (ft_strcmp(command, "sa") == 0)
 	{
+		printf("sa\n");
+		swap(stack_a);
+	}
+	else if (ft_strcmp(command, "sb") == 0)
+	{
+		printf("sb\n");
+		swap(stack_b);
+	}
+	else if (ft_strcmp(command, "ss") == 0)
+	{
+		printf("ss\n");
 		swap(stack_a);
 		swap(stack_b);
 	}
-	else if (ft_strcmp(command, "pa"))
-		push(&stack_a, &stack_b);
-	else if (ft_strcmp(command, "pb"))
-		push(&stack_b, &stack_a);
-	else if (ft_strcmp(command, "ra"))
-		rotate (&stack_a, 0);
-	else if (ft_strcmp(command, "rb"))
-		rotate (&stack_b, 0);
-	else if(ft_strcmp(command, "rr"))
+	else if (ft_strcmp(command, "pa") == 0)
 	{
-		rotate (&stack_a, 0);
-		rotate(&stack_b, 0);
+		printf("pa\n");
+		printf("before exec a = %p\n", *stack_a);
+		push(stack_a, stack_b);
+		printf("after exec a = %p\n", *stack_a);
 	}
-	else if (ft_strcmp(command, "rra"))
-		rotate (&stack_a, 1);
-	else if (ft_strcmp(command, "rrb"))
-		rotate (&stack_b, 1);
-	else if(ft_strcmp(command, "rrr"))
+	else if (ft_strcmp(command, "pb") == 0)
 	{
-		rotate (&stack_a, 1);
-		rotate(&stack_b, 1);
+		printf("pb\n");
+		push(stack_b, stack_a);
+		printf("after exec a = %p\n", stack_a);
+	}
+	else if (ft_strcmp(command, "ra") == 0)
+	{
+		printf("ra\n");
+		rotate (stack_a, 0);
+	}
+	else if (ft_strcmp(command, "rb") == 0)
+	{
+		printf("rb\n");
+		rotate (stack_b, 0);
+	}
+	else if(ft_strcmp(command, "rr") == 0)
+	{
+		printf("rr\n");
+		rotate (stack_a, 0);
+		rotate(stack_b, 0);
+	}
+	else if (ft_strcmp(command, "rra") == 0)
+	{
+		printf("rra\n");
+		rotate (stack_a, 1);
+	}
+	else if (ft_strcmp(command, "rrb") == 0)
+	{
+		printf("rrb\n");
+		rotate (stack_b, 1);
+	}
+	else if(ft_strcmp(command, "rrr") == 0)
+	{
+		printf("rrr\n");
+		rotate (stack_a, 1);
+		rotate(stack_b, 1);
 	}
 }

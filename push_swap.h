@@ -36,7 +36,7 @@ void	push_swap(t_list *stack_a, t_list *stack_b);
 int		ft_strcmp(const char *s1, const char *s2);
 int		is_valid_input(char *str);
 
-void	swap(t_list *stack);
+void	swap(t_list **stack);
 void	push(t_list **stack_a, t_list **stack_b);
 int		ft_strcmp(const char *s1, const char *s2);
 void	rotate(t_list **stack, int reversed);
@@ -48,11 +48,9 @@ int		*sort_arr(int *arr, int n);
 void	selection_sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
 void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
 void	push_swap(t_list *stack_a, t_list *stack_b);
-void	swap(t_list *stack);
-void	push(t_list **from, t_list **to);
-void	rotate(t_list **stack, int reversed);
-void	execute(t_list *stack_a, t_list *stack_b, char *command);
+void	execute(t_list **stack_a, t_list **stack_b, char *command);
 void	free_split(char **str);
+void	print_2stacks(t_list *stack_a, t_list *stack_b);
 
 
 #endif

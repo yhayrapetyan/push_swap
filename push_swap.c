@@ -67,15 +67,16 @@ void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len)
 	{
 		if (stack_a->content > arr[i] || stack_a->content > arr[i + step])
 		{
-			execute(stack_a, stack_b, "pb");
+			if (!stack_b)
+				stack_b = create_node(0);
+			execute(&stack_a, &stack_b, "pa");
 			if (stack_a->content > arr[i])
-				execute(stack_a, stack_b, "rb");
+				execute(&stack_a, &stack_b, "rb");
 			i++;
 		}
+		print_2stacks(stack_a, stack_b);
 		stack_a = stack_a->next;
 	}
-	print_stack(stack_b);
-
 }
 
 
@@ -95,20 +96,25 @@ void	push_swap(t_list *stack_a, t_list *stack_b)
 	{
 		sorted_arr[i] = stack_a->content;
 		i++;
-		stack_a = stack_a->next;
+		if (stack_a->next)
+			stack_a = stack_a->next;
 	}
 	sorted_arr = sort_arr(sorted_arr, len);
 	i = 0;
+	// =======for printing array==========
+	// while (i < len)
+	// {
+	// 	printf("%d\n", sorted_arr[i]);
+	// 	i++;
+	// }
 	stack_a = get_first_node(stack_a);
-	printf("AAAAAAA\n");
+	// if (is_sorted(stack_a))
+	// 	return ;
+	// if (len <= 3)
+	// 	sort_for3(stack_a, stack_b);
+	// else if (len <= 5)
+	// 	sort_for5(stack_a, stack_b);
+	// else
+	sort(stack_a, stack_b, sorted_arr, len);
 	free(sorted_arr);
-	return ;
-	if (is_sorted(stack_a))
-		return ;
-	if (len <= 3)
-		sort_for3(stack_a, stack_b);
-	else if (len <= 5)
-		sort_for5(stack_a, stack_b);
-	else
-		sort(stack_a, stack_b, sorted_arr, len);
 }
