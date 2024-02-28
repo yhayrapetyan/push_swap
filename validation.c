@@ -46,7 +46,10 @@ void	check_for_empty_string(char **str)
 		while (str[i][j] && ft_strchr(" \n\t\f\v\r", str[i][j])) //maybe more
 			j++;
 		if (j == ft_strlen(str[i]))
+		{
+			printf("Error\n");
 			exit(EXIT_FAILURE);
+		}
 		i++;
 	}
 }
