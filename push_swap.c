@@ -14,11 +14,15 @@
 
 void	sort_for3(t_list *stack_a, t_list *stack_b)
 {
+	(void )stack_a;
+	(void )stack_b;
 	return ;
 }
 
 void sort_for5(t_list *stack_a, t_list *stack_b)
 {
+	(void )stack_a;
+	(void )stack_b;
 	return ;
 }
 
@@ -49,6 +53,10 @@ int	*sort_arr(int *arr, int n)
 
 void	selection_sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len)
 {
+	(void )stack_a;
+	(void )stack_b;
+	(void )arr;
+	(void )arr_len;
 
 }
 

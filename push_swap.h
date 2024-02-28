@@ -23,34 +23,46 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+// STACK UTILS
 int		stack_len(t_list *stack);
-t_list	*create_node(int content);
 void	clean_stack(t_list *node);
+t_list	*create_node(int content);
 t_list	*get_last_node(t_list *node);
 t_list	*get_first_node(t_list *node);
 t_list	*add_node(t_list *node, int content);
 
-void	print_stack(t_list *stack);
-int		is_sorted(t_list *stack);
-void	push_swap(t_list *stack_a, t_list *stack_b);
-int		ft_strcmp(const char *s1, const char *s2);
-int		is_valid_input(char *str);
-
+// STACK OPERATIONS
 void	swap(t_list **stack);
-void	push(t_list **stack_a, t_list **stack_b);
-int		ft_strcmp(const char *s1, const char *s2);
 void	rotate(t_list **stack, int reversed);
-char	**ft_split(char const *s, char c);
+void	push(t_list **stack_a, t_list **stack_b);
+void	execute(t_list **stack_a, t_list **stack_b, char *command);
 
+// HELPERS
+int		ft_strlen(char *str);
+void	free_split(char **str);
+int		is_sorted(t_list *stack);
+void	print_stack(t_list *stack);
+int		ft_strchr(const char *s, int c);
+char	**ft_split(char const *s, char c);
+int		ft_strcmp(const char *s1, const char *s2);
+void	print_2stacks(t_list *stack_a, t_list *stack_b); // need to comment !!!
+
+// VALIDATION
+int		digit_len(char *str); //maybe neet to change static if not should include split functions
+int		is_valid_input(char *str);
+void	check_for_empty_string(char **str);
+void	ft_error(t_list *stack_a, char **str);
+void	check_for_dublicates(t_list *stack, char **str);
+int		ft_check_atoi(const char *str, t_list *stack_a, char **split_result);
+
+// SORT
+int		*sort_arr(int *arr, int n);
+void	push_swap(t_list *stack_a, t_list *stack_b);
 void	sort_for3(t_list *stack_a, t_list *stack_b);
 void	sort_for5(t_list *stack_a, t_list *stack_b);
-int		*sort_arr(int *arr, int n);
-void	selection_sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
-void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
 void	push_swap(t_list *stack_a, t_list *stack_b);
-void	execute(t_list **stack_a, t_list **stack_b, char *command);
-void	free_split(char **str);
-void	print_2stacks(t_list *stack_a, t_list *stack_b);
+void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
+void	selection_sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
 
 
 #endif

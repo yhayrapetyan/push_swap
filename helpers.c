@@ -1,74 +1,19 @@
 #include "push_swap.h"
 
-void	print_stack(t_list *stack)
+void	free_split(char **str)
 {
 	int	i;
 
-	stack = get_first_node(stack);
-	while (stack)
+	i = 0;
+	if (!str)
+		return ;
+	while (str[i])
 	{
-		i = 0;
-		printf("%d", stack->content);
-		// if (stack->content < 0)
-		// {
-		// 	stack->content *= -1;
-		// 	printf("minus");
-		// }
-		// while (i < stack->content)
-		// {
-		// 	printf("*");
-		// 	i++;
-		// }
-		printf("\n");
-		stack = stack->next;
+		free(str[i]);
+		i++;
 	}
-}
-
-void	print_2stacks(t_list *stack_a, t_list *stack_b)
-{
-	stack_a = get_first_node(stack_a);
-	stack_b = get_first_node(stack_b);
-	printf("=~=~==~==~==~==~==~==~==~==~==~==~==~==~==~==~=~\n");
-	printf("                 PRINTING STACKS                \n");
-	printf("=~=~==~==~==~==~==~==~==~==~==~==~==~==~==~==~=~\n");
-	if (stack_a)
-	{
-		printf("STACK A");
-		if (stack_b)
-		{
-			printf("\t\tSTACK B");
-		}
-		printf("\n");
-		while (stack_a)
-		{
-			printf("%d", stack_a->content);
-			if (stack_b)
-			{
-				printf("\t\t%d", stack_b->content);
-				stack_b = stack_b->next;
-			}
-			printf("\n");
-			stack_a = stack_a->next;
-		}
-		if (stack_b)
-		{
-			printf("\t\t%d", stack_b->content);
-			stack_b = stack_b->next;
-			printf("\n");
-		}
-	}
-	else
-	{
-
-		printf("STACK B\n");
-		while (stack_b)
-		{
-			printf("%d\n", stack_b->content);
-			stack_b = stack_b->next;
-		}
-	}
-	printf("================================================\n");
-	printf("================================================\n");
+	free(str[i]);
+	free(str);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
@@ -94,4 +39,30 @@ int	is_sorted(t_list *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+int	ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return (1);
+		i++;
+	}
+	if (s[i] == (const char)c)
+		return (1);
+	return (0);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

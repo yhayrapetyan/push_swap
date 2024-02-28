@@ -12,53 +12,6 @@
 
 #include "push_swap.h"
 
-int	is_valid_input(char *str)
-{
-	int	sign;
-
-	sign = 1;
-	if (!str)
-		return (0);
-	if (*str == '-')
-	{
-		sign = -1;
-		str++;
-	}
-	while (*str)
-	{
-		if (!(*str >= '0' && *str <= '9'))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-void	ft_error(t_list *stack_a, char **str)
-{
-	clean_stack(stack_a);
-	if (str)
-		free_split(str);
-	printf("Error\n");
-	//system("leaks a.out");
-	exit(EXIT_FAILURE);
-}
-
-void	free_split(char **str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return ;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str[i]);
-	free(str);
-}
-
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
@@ -73,6 +26,7 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		ft_error(stack_a, str);
 	j = 1;
+	check_for_empty_string(av);
 	while (j < ac)
 	{
 		free_split(str);
@@ -84,20 +38,18 @@ int	main(int ac, char **av)
 		{
 			if (!is_valid_input(str[i]))
 				ft_error(stack_a, str);
-			stack_a = add_node(stack_a, atoi(str[i]));
+			stack_a = add_node(stack_a, ft_check_atoi(str[i], stack_a, str));
 			i++;
 		}
 		j++;
 	}
-	push_swap(stack_a, stack_b);
-	//stack_b = create_node(0);
-	// stack_b = add_node(stack_b, 0);
-
 	print_2stacks(stack_a, stack_b);
+	check_for_dublicates(stack_a, str);
+	// push_swap(stack_a, stack_b);
 
 	free_split(str);
 	clean_stack(stack_a);
 	clean_stack(stack_b);
-	system("leaks a.out");
+	system("leaks push_swap");
 	return (0);
 }
