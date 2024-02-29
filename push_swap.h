@@ -48,7 +48,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	print_2stacks(t_list *stack_a, t_list *stack_b); // need to comment !!!
 
 // VALIDATION
-int		digit_len(char *str); //maybe neet to change static if not should include split functions
+int		digit_len(char *str); //maybe need change to static if not, should include split functions
 int		is_valid_input(char *str);
 void	check_for_empty_string(char **str);
 void	ft_error(t_list *stack_a, char **str);
