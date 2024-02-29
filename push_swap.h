@@ -52,8 +52,9 @@ int		digit_len(char *str); //maybe neet to change static if not should include s
 int		is_valid_input(char *str);
 void	check_for_empty_string(char **str);
 void	ft_error(t_list *stack_a, char **str);
-void	check_for_dublicates(t_list *stack, char **str);
+void	check_for_dublicates(t_list *stack);
 int		ft_check_atoi(const char *str, t_list *stack_a, char **split_result);
+void	fill_stack(t_list **stack_a, int ac, char **av); // also stack operation
 
 // SORT
 int		*sort_arr(int *arr, int n);

@@ -16,38 +16,18 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	char	**str;
-	int		i;
-	int		j;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	str = NULL;
 	if (ac < 2)
-		ft_error(stack_a, str);
-	j = 1;
+		ft_error(stack_a, NULL);
 	check_for_empty_string(av);
-	while (j < ac)
-	{
-		free_split(str);
-		i = 0;
-		str = ft_split(av[j], ' ');
-		if (str == NULL)
-			ft_error(stack_a, str);
-		while (str[i])
-		{
-			if (!is_valid_input(str[i]))
-				ft_error(stack_a, str);
-			stack_a = add_node(stack_a, ft_check_atoi(str[i], stack_a, str));
-			i++;
-		}
-		j++;
-	}
-	print_2stacks(stack_a, stack_b);
-	check_for_dublicates(stack_a, str);
+	fill_stack(&stack_a, ac, av);
+	check_for_dublicates(stack_a);
 	// push_swap(stack_a, stack_b);
 
-	free_split(str);
+	print_2stacks(stack_a, stack_b);
+
 	clean_stack(stack_a);
 	clean_stack(stack_b);
 	system("leaks push_swap");

@@ -20,6 +20,9 @@ $(NAME): $(OBJS)
 
 $(OBJS): push_swap.h Makefile
 
+sanitize:
+	cc -fsanitize=address *.c -o push_swap
+
 .c.o:
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
@@ -31,4 +34,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re sanitize

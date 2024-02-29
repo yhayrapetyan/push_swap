@@ -12,13 +12,42 @@
 
 #include "push_swap.h"
 
-void	check_for_dublicates(t_list *stack, char **str)
+void	fill_stack(t_list **stack_a, int ac, char **av)
+{
+	char	**str;
+	int		i;
+	int		j;
+
+	if (!stack_a)
+		return ;
+	j = 1;
+	while (j < ac)
+	{
+		free_split(str);
+		i = 0;
+		str = ft_split(av[j], ' ');
+		if (str == NULL)
+			ft_error(*stack_a, str);
+		while (str[i])
+		{
+			if (!is_valid_input(str[i]))
+				ft_error(*stack_a, str);
+			*stack_a = add_node(*stack_a, ft_check_atoi(str[i], *stack_a, str));
+			i++;
+		}
+		j++;
+	}
+	free_split(str);
+}
+
+void	check_for_dublicates(t_list *stack)
 {
 	int		tmp_content;
 	t_list	*tmp_node;
 
 	if (!stack)
 		return ; // maybe not?
+	stack = get_first_node(stack);
 	tmp_node = stack;
 	while (tmp_node)
 	{
@@ -27,7 +56,7 @@ void	check_for_dublicates(t_list *stack, char **str)
 		{
 			stack = stack->next;
 			if (stack && tmp_content == stack->content)
-				ft_error(stack, str);
+				ft_error(stack, NULL);
 		}
 		tmp_node = tmp_node->next;
 		stack = tmp_node;
@@ -133,6 +162,6 @@ void	ft_error(t_list *stack_a, char **str)
 	if (str)
 		free_split(str);
 	printf("Error\n");
-	//system("leaks a.out");
+	system("leaks push_swap");
 	exit(EXIT_FAILURE);
 }
