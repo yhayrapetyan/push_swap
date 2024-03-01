@@ -21,6 +21,7 @@ void	fill_stack(t_list **stack_a, int ac, char **av)
 	if (!stack_a)
 		return ;
 	j = 1;
+	str = NULL;
 	while (j < ac)
 	{
 		free_split(str);
@@ -135,16 +136,16 @@ int	digit_len(char *str)
 
 int	is_valid_input(char *str)
 {
-	int	sign;
+	// int	sign;
 
-	sign = 1;
+	// sign = 1;
 	if (!str)
 		return (0);
 	if (digit_len(str) > 11)
 		return (0);
 	if (*str == '-')
 	{
-		sign = -1;
+		// sign = -1;
 		str++;
 	}
 	while (*str)

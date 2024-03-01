@@ -59,8 +59,8 @@ void	fill_stack(t_list **stack_a, int ac, char **av); // also stack operation
 // SORT
 int		*sort_arr(int *arr, int n);
 void	push_swap(t_list *stack_a, t_list *stack_b);
-void	sort_for3(t_list *stack_a, t_list *stack_b);
-void	sort_for5(t_list *stack_a, t_list *stack_b);
+void	sort_for3(t_list **stack_a, t_list **stack_b);
+void	sort_for5(t_list **stack_a, t_list **stack_b, int len);
 void	push_swap(t_list *stack_a, t_list *stack_b);
 void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
 void	selection_sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);

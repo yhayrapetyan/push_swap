@@ -14,12 +14,10 @@
 
 void	print_stack(t_list *stack)
 {
-	int	i;
 
 	stack = get_first_node(stack);
 	while (stack)
 	{
-		i = 0;
 		printf("%d", stack->content);
 		// if (stack->content < 0)
 		// {

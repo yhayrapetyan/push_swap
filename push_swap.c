@@ -12,18 +12,100 @@
 
 #include "push_swap.h"
 
-void	sort_for3(t_list *stack_a, t_list *stack_b)
+void	sort_for3(t_list **stack_a, t_list **stack_b)
 {
-	(void )stack_a;
-	(void )stack_b;
-	return ;
+	if ((*stack_a)->content < (*stack_a)->next->content && 
+		(*stack_a)->content > (*stack_a)->next->next->content)
+		execute(stack_a, stack_b, "rra");
+	else if ((*stack_a)->content < (*stack_a)->next->content && 
+		(*stack_a)->content < (*stack_a)->next->next->content)
+	{
+		execute(stack_a, stack_b, "rra");
+		execute(stack_a, stack_b, "sa");
+	}
+	else if ((*stack_a)->content > (*stack_a)->next->content && 
+		(*stack_a)->content < (*stack_a)->next->next->content)
+		execute(stack_a, stack_b, "sa");
+	else if ((*stack_a)->content > (*stack_a)->next->content && 
+		(*stack_a)->content > (*stack_a)->next->next->content &&
+		(*stack_a)->next->content < (*stack_a)->next->next->content)
+		execute(stack_a, stack_b, "ra");
+	else 
+	{
+		execute(stack_a, stack_b, "sa");
+		execute(stack_a, stack_b, "rra");
+	}
+
+}
+int	get_min_position(t_list **stack_a)
+{
+	int		tmp_content;
+	t_list	*tmp_node;
+	int		pos;
+	int		count;
+
+	*stack_a = get_first_node(*stack_a);
+	tmp_node = *stack_a;
+	tmp_content = tmp_node->content;
+	pos = 0;
+	count = 0;
+	while (tmp_node)
+	{
+		if (tmp_node->content < tmp_content)
+		{
+			pos = count;
+			tmp_content = tmp_node->content;	
+		}
+		tmp_node = tmp_node->next;
+		count++;
+	}
+	return (pos);
 }
 
-void sort_for5(t_list *stack_a, t_list *stack_b)
+void	push_min(t_list **stack_a, t_list **stack_b, int pos, int len)
 {
-	(void )stack_a;
-	(void )stack_b;
-	return ;
+	if (pos <= (len - 1) / 2)
+	{
+		while (pos > 0)
+		{
+			execute(stack_a, stack_b, "ra");
+			pos--;
+		}
+	}
+	else
+	{
+		while (pos < len)
+		{
+			execute(stack_a, stack_b, "rra");
+			pos++;
+		}	
+	}
+	execute(stack_a, stack_b, "pa");
+}
+
+void	push_min_to_stack(t_list **stack_a, t_list **stack_b,int len)
+{
+	int	position;
+
+	if (!stack_a)
+		return ;
+	while (len > 3)
+	{
+		position = get_min_position(stack_a);
+		push_min(stack_a, stack_b, position, len);
+		len--;
+	}
+}
+
+void sort_for5(t_list **stack_a, t_list **stack_b, int len)
+{
+	push_min_to_stack(stack_a, stack_b, len);
+	sort_for3(stack_a, stack_b);
+	while (len > 3)
+	{
+		execute(stack_a, stack_b, "pb");
+		len--;
+	}
 }
 
 int	*sort_arr(int *arr, int n)
@@ -80,7 +162,6 @@ void	sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len)
 				execute(&stack_a, &stack_b, "rb");
 			i++;
 		}
-		print_2stacks(stack_a, stack_b);
 		stack_a = stack_a->next;
 	}
 }
@@ -114,13 +195,15 @@ void	push_swap(t_list *stack_a, t_list *stack_b)
 	// 	i++;
 	// }
 	stack_a = get_first_node(stack_a);
-	// if (is_sorted(stack_a))
-	// 	return ;
-	// if (len <= 3)
-	// 	sort_for3(stack_a, stack_b);
-	// else if (len <= 5)
-	// 	sort_for5(stack_a, stack_b);
-	// else
-	sort(stack_a, stack_b, sorted_arr, len);
+	if (is_sorted(stack_a))
+		return ;
+	if (len == 2)
+		execute(&stack_a, &stack_b, "sa");
+	else if (len == 3)
+		sort_for3(&stack_a, &stack_b);
+	else if (len <= 5)
+		sort_for5(&stack_a, &stack_b, len);
+	else
+		sort(stack_a, stack_b, sorted_arr, len);
 	free(sorted_arr);
 }

@@ -1,5 +1,4 @@
-SRC = 	ft_check_atoi.c \
-		ft_split.c \
+SRC = 	ft_split.c \
 		helpers.c \
 		main.c \
 		my_helpers_NO-NORME.c \
@@ -21,7 +20,7 @@ $(NAME): $(OBJS)
 $(OBJS): push_swap.h Makefile
 
 sanitize:
-	cc -fsanitize=address *.c -o push_swap
+	cc -fsanitize=address $(SRC) -o $(NAME)
 
 .c.o:
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)

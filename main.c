@@ -24,9 +24,9 @@ int	main(int ac, char **av)
 	check_for_empty_string(av);
 	fill_stack(&stack_a, ac, av);
 	check_for_dublicates(stack_a);
-	// push_swap(stack_a, stack_b);
+	push_swap(stack_a, stack_b);
 
-	print_2stacks(stack_a, stack_b);
+	// print_2stacks(stack_a, stack_b);
 
 	clean_stack(stack_a);
 	clean_stack(stack_b);
