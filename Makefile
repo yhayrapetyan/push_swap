@@ -5,7 +5,9 @@ SRC = 	ft_split.c \
 		push_swap.c \
 		stack_operations.c \
 		stack_utils.c \
-		validation.c
+		validation.c \
+		sort_for5.c \
+		sort_for3.c
 
 OBJS = $(SRC:.c=.o)
 CC = cc
