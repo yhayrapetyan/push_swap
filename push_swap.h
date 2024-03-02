@@ -46,6 +46,7 @@ int		ft_strchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
 int		ft_strcmp(const char *s1, const char *s2);
 void	print_2stacks(t_list *stack_a, t_list *stack_b); // need to comment !!!
+void	print_2stacks_len(t_list *stack_a, t_list *stack_b); // same
 
 // VALIDATION
 int		digit_len(char *str); //maybe need change to static if not, should include split functions
@@ -59,13 +60,12 @@ void	fill_stack(t_list **stack_a, int ac, char **av); // also stack operation
 // SORT
 int		*sort_arr(int *arr, int n);
 int		get_min_position(t_list **stack_a);
-void	push_swap(t_list *stack_a, t_list *stack_b);
-void	push_swap(t_list *stack_a, t_list *stack_b);
+void	push_swap(t_list **stack_a, t_list **stack_b);
 void	sort_for3(t_list **stack_a, t_list **stack_b);
 void	sort_for5(t_list **stack_a, t_list **stack_b, int len);
 void	sort(t_list **stack_a, t_list **stack_b, int *arr, int arr_len);
 void	push_min(t_list **stack_a, t_list **stack_b, int pos, int len);
-void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b,int len);
-void	selection_sort(t_list *stack_a, t_list *stack_b, int *arr, int arr_len);
+void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b, int len);
+void	selection_sort(t_list **stack_a, t_list **stack_b, int arr_len);
 
 #endif

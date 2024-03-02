@@ -1,13 +1,15 @@
 SRC = 	ft_split.c \
-		helpers.c \
-		main.c \
+		stack_operations.c \
 		my_helpers_NO-NORME.c \
 		push_swap.c \
-		stack_operations.c \
+		helpers.c \
 		stack_utils.c \
 		validation.c \
 		sort_for5.c \
-		sort_for3.c
+		sort_for3.c \
+		sort.c \
+		main.c \
+		selection_sort.c
 
 OBJS = $(SRC:.c=.o)
 CC = cc
