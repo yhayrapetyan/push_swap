@@ -76,7 +76,7 @@ void	sort(t_list **stack_a, t_list **stack_b, int *arr, int arr_len)
 	{
 		if ((*stack_a)->content > arr[i] || (*stack_a)->content > arr[i + step])
 		{
-			execute(stack_a, stack_b, "pa");
+			execute(stack_a, stack_b, "pb");
 			if ((*stack_a)->content > arr[i])
 			{
 				execute(stack_a, stack_b, "rb");

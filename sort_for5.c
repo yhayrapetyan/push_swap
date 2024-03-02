@@ -29,7 +29,7 @@ int	get_min_position(t_list **stack_a)
 		if (tmp_node->content < tmp_content)
 		{
 			pos = count;
-			tmp_content = tmp_node->content;	
+			tmp_content = tmp_node->content;
 		}
 		tmp_node = tmp_node->next;
 		count++;
@@ -53,12 +53,12 @@ void	push_min(t_list **stack_a, t_list **stack_b, int pos, int len)
 		{
 			execute(stack_a, stack_b, "rra");
 			pos++;
-		}	
+		}
 	}
-	execute(stack_a, stack_b, "pa");
+	execute(stack_a, stack_b, "pb");
 }
 
-void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b,int len)
+void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b, int len)
 {
 	int	position;
 
@@ -72,13 +72,13 @@ void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b,int len)
 	}
 }
 
-void sort_for5(t_list **stack_a, t_list **stack_b, int len)
+void	sort_for5(t_list **stack_a, t_list **stack_b, int len)
 {
 	push_2_minimums_from_stack(stack_a, stack_b, len);
 	sort_for3(stack_a, stack_b);
 	while (len > 3)
 	{
-		execute(stack_a, stack_b, "pb");
+		execute(stack_a, stack_b, "pa");
 		len--;
 	}
 }

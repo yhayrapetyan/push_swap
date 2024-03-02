@@ -114,12 +114,12 @@ void	execute(t_list **stack_a, t_list **stack_b, char *command)
 	else if (ft_strcmp(command, "pa") == 0)
 	{
 		printf("pa\n");
-		push(stack_a, stack_b);
+		push(stack_b, stack_a);
 	}
 	else if (ft_strcmp(command, "pb") == 0)
 	{
 		printf("pb\n");
-		push(stack_b, stack_a);
+		push(stack_a, stack_b);
 	}
 	else if (ft_strcmp(command, "ra") == 0)
 	{
