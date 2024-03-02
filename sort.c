@@ -62,7 +62,7 @@ int	ft_log2(int nb)
 
 int	get_optimal_step(int len)
 {
-	return (ft_sqrt(len) + ft_log2(len) + 1);
+	return (ft_sqrt(len) + ft_log2(len));
 }
 
 int	stack_max(t_list *stack)
@@ -99,14 +99,14 @@ void	sort(t_list **stack_a, t_list **stack_b, int *ar, int arr_len)
 	// }
 	// i = 0;
 	// step = get_optimal_step(arr_len);
-	step = 13;
+	step = 15;
 	while ((*stack_a) != NULL && i < arr_len)
 	{
-		if ((*stack_a)->content <= ar[i] || (*stack_a)->content <= ar[i + step])
+		if ((*stack_a)->content < ar[i] || (*stack_a)->content < ar[i + step])
 		{
 			count ++;
 			execute(stack_a, stack_b, "pb");
-			if ((*stack_a) && (*stack_a)->content <= ar[i])
+			if ((*stack_a) && (*stack_a)->content < ar[i])
 			{
 				execute(stack_a, stack_b, "rb");
 			}
@@ -125,5 +125,6 @@ void	sort(t_list **stack_a, t_list **stack_b, int *ar, int arr_len)
 	// print_2stacks(*stack_a, *stack_b);
 	// printf("count = %d\n", count);
 	selection_sort(stack_a, stack_b, count);
-	print_2stacks(*stack_a, *stack_b);
+	// printf("max = %d\n", stack_max(*stack_a));
+	// print_2stacks(*stack_a, *stack_b);
 }

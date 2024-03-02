@@ -39,7 +39,7 @@ int	get_max_position(t_list **stack)
 
 void	push_max(t_list **stack_a, t_list **stack_b, int pos, int len)
 {
-	if (pos <= (len - 1) / 2)
+	if (pos <= (len - 1) / 2 )
 	{
 		while (pos > 0)
 		{
