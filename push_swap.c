@@ -37,12 +37,24 @@ int	*sort_arr(int *arr, int n)
 	return (arr);
 }
 
+int	*fill_arr(t_list	*stack, int	*arr, int len)
+{
+	int	i;
 
+	i = 0;
+	while (i < len)
+	{
+		arr[i] = stack->content;
+		i++;
+		if (stack->next)
+			stack = stack->next;
+	}
+	return (arr);
+}
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
 	int	*sorted_arr;
-	int	i;
 	int	len;
 
 	(*stack_a) = get_first_node(*stack_a);
@@ -50,22 +62,8 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 	sorted_arr = (int *)malloc(sizeof(int) * len);
 	if (!sorted_arr)
 		return ;
-	i = 0;
-	while (i < len)
-	{
-		sorted_arr[i] = (*stack_a)->content;
-		i++;
-		if ((*stack_a)->next)
-			(*stack_a) = (*stack_a)->next;
-	}
+	sorted_arr = fill_arr(*stack_a, sorted_arr, len);
 	sorted_arr = sort_arr(sorted_arr, len);
-	i = 0;
-	// =======for printing array==========
-	// while (i < len)
-	// {
-	// 	printf("%d\n", sorted_arr[i]);
-	// 	i++;
-	// }
 	(*stack_a) = get_first_node(*stack_a);
 	if (is_sorted(*stack_a))
 		return ;

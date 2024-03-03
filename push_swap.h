@@ -39,6 +39,9 @@ void	execute(t_list **stack_a, t_list **stack_b, char *command);
 
 // HELPERS
 int		ft_strlen(char *str);
+int		ft_sqrt(int nb);
+int		ft_pow(int nb, int power);
+int		ft_log2(unsigned int n);
 void	free_split(char **str);
 int		is_sorted(t_list *stack);
 void	print_stack(t_list *stack);
@@ -58,15 +61,19 @@ int		ft_check_atoi(const char *str, t_list *stack_a, char **split_result);
 void	fill_stack(t_list **stack_a, int ac, char **av); // also stack operation
 
 // SORT
-int		*sort_arr(int *arr, int n);
-int		get_min_position(t_list **stack_a);
 int		get_optimal_step(int len);
+int		*sort_arr(int *arr, int n);
+int		*sort_arr(int *arr, int n);
+int		get_max_position(t_list **stack);
+int		get_min_position(t_list **stack_a);
 void	push_swap(t_list **stack_a, t_list **stack_b);
 void	sort_for3(t_list **stack_a, t_list **stack_b);
+int		*fill_arr(t_list *stack, int	*arr, int len);
 void	sort_for5(t_list **stack_a, t_list **stack_b, int len);
-void	sort(t_list **stack_a, t_list **stack_b, int *arr, int arr_len);
+void	push_max(t_list **stack_a, t_list **stack_b, int pos, int len);
 void	push_min(t_list **stack_a, t_list **stack_b, int pos, int len);
-void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b, int len);
 void	selection_sort(t_list **stack_a, t_list **stack_b, int arr_len);
+void	sort(t_list **stack_a, t_list **stack_b, int *arr, int arr_len);
+void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b, int len);
 
 #endif
