@@ -48,7 +48,7 @@ void	print_stars(int	len)
 	}
 	while (i < cpy)
 	{
-		printf("*");
+		printf(".");
 		i++;
 	}
 }

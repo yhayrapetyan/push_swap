@@ -60,6 +60,7 @@ void	fill_stack(t_list **stack_a, int ac, char **av); // also stack operation
 // SORT
 int		*sort_arr(int *arr, int n);
 int		get_min_position(t_list **stack_a);
+int		get_optimal_step(int len);
 void	push_swap(t_list **stack_a, t_list **stack_b);
 void	sort_for3(t_list **stack_a, t_list **stack_b);
 void	sort_for5(t_list **stack_a, t_list **stack_b, int len);

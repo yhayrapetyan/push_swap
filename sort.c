@@ -21,13 +21,13 @@ int	ft_sqrt(int nb)
 	if (nb == 1)
 		return (1);
 	i = 2;
-	while ((i <= (nb / 2)) && i <= 46340)
+	while ((i <= (nb / 2)) && i <= 46340 && (i * i) < nb)
 	{
 		if (i * i == nb)
 			return (i);
 		i++;
 	}
-	return ((int)(i / 2));
+	return (i);
 }
 
 int	ft_pow(int nb, int power)
@@ -49,20 +49,31 @@ int	ft_pow(int nb, int power)
 	return (result);
 }
 
-int	ft_log2(int nb)
+int	ft_log2(unsigned int n)
+{
+    int	result;
+
+	result = -1;
+    while (n) {
+        n >>= 1;
+        result++;
+    }
+    return (result);
+}
+
+int	ft_sqrt3(int n)
 {
 	int	i;
 
 	i = 1;
-	while (ft_pow(2, i) < nb)
+	while (ft_pow(i, 3) <= n)
 		i++;
 	return (i);
-
 }
 
 int	get_optimal_step(int len)
 {
-	return (ft_sqrt(len) + ft_log2(len));
+	return (ft_sqrt(len) + ft_log2(len) - 1);
 }
 
 int	stack_max(t_list *stack)
@@ -87,44 +98,35 @@ void	sort(t_list **stack_a, t_list **stack_b, int *ar, int arr_len)
 {
 	int	i;
 	int	step;
-	int	count;
 
 	i = 0;
-	count = 0;
-	// =======for printing array==========
-	// while (i < arr_len)
-	// {
-	// 	printf("arr[%d] = %d\n",i, ar[i]);
-	// 	i++;
-	// }
-	// i = 0;
-	// step = get_optimal_step(arr_len);
-	step = 15;
+	step = get_optimal_step(arr_len);
 	while ((*stack_a) != NULL && i < arr_len)
 	{
-		if ((*stack_a)->content < ar[i] || (*stack_a)->content < ar[i + step])
+		if ((*stack_a)->content <= ar[i])
 		{
-			count ++;
 			execute(stack_a, stack_b, "pb");
-			if ((*stack_a) && (*stack_a)->content < ar[i])
-			{
-				execute(stack_a, stack_b, "rb");
-			}
+			execute(stack_a, stack_b, "rb");
+			i++;
+		}
+		else if ((*stack_a)->content <= ar[i + step])
+		{
+			execute(stack_a, stack_b, "pb");
 			i++;
 		}
 		else
 			execute(stack_a, stack_b, "ra");
 		if (i + step >= arr_len)
 			step--;
-		if ((*stack_a) && (*stack_a)->content > stack_max(*stack_b) && is_sorted(*stack_a))
-			break ;
 	}
 	//  print_2stacks(*stack_a, *stack_b);
 	// sort_for5(stack_a, stack_b);
 
-	// print_2stacks(*stack_a, *stack_b);
 	// printf("count = %d\n", count);
-	selection_sort(stack_a, stack_b, count);
+	selection_sort(stack_a, stack_b, arr_len);
+	// print_2stacks_len(*stack_a, *stack_b); 
 	// printf("max = %d\n", stack_max(*stack_a));
 	// print_2stacks(*stack_a, *stack_b);
+	// if (is_sorted(*stack_a))
+	// 	printf("SORTED\n");
 }
