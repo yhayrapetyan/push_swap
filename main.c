@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	if (ac < 2)
 		ft_error(stack_a, NULL);
+	// NEED TO FIX ALL printf !!!!!!!!!!!!
 	check_for_empty_string(av);
 	fill_stack(&stack_a, ac, av);
 	check_for_dublicates(stack_a);

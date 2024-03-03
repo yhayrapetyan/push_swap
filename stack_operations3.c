@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_operations.c                                 :+:      :+:    :+:   */
+/*   stack_operations3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yuhayrap <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,21 +12,21 @@
 
 #include "push_swap.h"
 
-void	rra(t_list **stack_a)
+void	ra(t_list **stack_a)
 {
-	printf("rra\n");
-	rotate(stack_a, 1);
+	printf("ra\n");
+	rotate(stack_a, 0);
 }
 
-void	rrb(t_list **stack_b)
+void	rb(t_list **stack_b)
 {
-	printf("rrb\n");
-	rotate(stack_b, 1);
+	printf("rb\n");
+	rotate(stack_b, 0);
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b)
+void	rr(t_list **stack_a, t_list **stack_b)
 {
-	printf("rrr\n");
-	rotate(stack_a, 1);
-	rotate(stack_b, 1);
+	printf("rr\n");
+	rotate(stack_a, 0);
+	rotate(stack_b, 0);
 }
