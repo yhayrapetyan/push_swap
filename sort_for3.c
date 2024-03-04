@@ -14,6 +14,8 @@
 
 void	sort_for3(t_list **stack_a, t_list **stack_b)
 {
+	if (is_sorted(*stack_a))
+		return ;
 	if ((*stack_a)->content < (*stack_a)->next->content && \
 		(*stack_a)->content > (*stack_a)->next->next->content)
 		execute(stack_a, stack_b, "rra");

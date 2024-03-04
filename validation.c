@@ -162,7 +162,8 @@ void	ft_error(t_list *stack_a, char **str)
 	clean_stack(stack_a);
 	if (str)
 		free_split(str);
-	printf("Error\n");
-	system("leaks push_swap");
+	// printf("Error\n");
+	write(2, "Error\n", 6);
+	// system("leaks push_swap");
 	exit(EXIT_FAILURE);
 }

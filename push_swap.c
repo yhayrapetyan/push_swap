@@ -66,7 +66,10 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 	sorted_arr = sort_arr(sorted_arr, len);
 	(*stack_a) = get_first_node(*stack_a);
 	if (is_sorted(*stack_a))
+	{
+		free(sorted_arr);
 		return ;
+	}
 	if (len == 2)
 		execute(stack_a, stack_b, "sa");
 	else if (len == 3)

@@ -43,7 +43,7 @@ void	push_max(t_list **stack_a, t_list **stack_b, int pos, int len)
 	{
 		while (pos > 0)
 		{
-			execute(stack_a, stack_b, "ra");
+			execute(stack_a, stack_b, "rb");
 			pos--;
 		}
 	}
@@ -51,11 +51,11 @@ void	push_max(t_list **stack_a, t_list **stack_b, int pos, int len)
 	{
 		while (pos < len)
 		{
-			execute(stack_a, stack_b, "rra");
+			execute(stack_a, stack_b, "rrb");
 			pos++;
 		}
 	}
-	execute(stack_a, stack_b, "pb");
+	execute(stack_a, stack_b, "pa");
 }
 
 void	selection_sort(t_list **stack_a, t_list **stack_b, int arr_len)
@@ -65,7 +65,7 @@ void	selection_sort(t_list **stack_a, t_list **stack_b, int arr_len)
 	while (arr_len > 0)
 	{
 		pos = get_max_position(stack_b);
-		push_max(stack_b, stack_a, pos, arr_len);
+		push_max(stack_a, stack_b, pos, arr_len);
 		arr_len--;
 	}
 }
