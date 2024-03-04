@@ -19,6 +19,8 @@ int	get_min_position(t_list **stack_a)
 	int		pos;
 	int		count;
 
+	if (stack_a == NULL)
+		return (0); //maybe not !!!!!!!!!!
 	*stack_a = get_first_node(*stack_a);
 	tmp_node = *stack_a;
 	tmp_content = tmp_node->content;

@@ -14,31 +14,31 @@
 
 void	sa(t_list **stack_a)
 {
-	printf("sa\n");
+	write(1, "sa\n", 3);
 	swap(stack_a);
 }
 
 void	sb(t_list **stack_b)
 {
-	printf("sb\n");
+	write(1, "sb\n", 3);
 	swap(stack_b);
 }
 
 void	ss(t_list **stack_a, t_list **stack_b)
 {
-	printf("ss\n");
+	write(1, "ss\n", 3);
 	swap(stack_a);
 	swap(stack_b);
 }
 
 void	pa(t_list **stack_a, t_list **stack_b)
 {
-	printf("pa\n");
+	write(1, "pa\n", 3);
 	push(stack_b, stack_a);
 }
 
 void	pb(t_list **stack_a, t_list **stack_b)
 {
-	printf("pb\n");
+	write(1, "pb\n", 3);
 	push(stack_a, stack_b);
 }

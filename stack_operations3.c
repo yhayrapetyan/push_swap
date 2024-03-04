@@ -14,19 +14,19 @@
 
 void	ra(t_list **stack_a)
 {
-	printf("ra\n");
+	write(1, "ra\n", 3);
 	rotate(stack_a, 0);
 }
 
 void	rb(t_list **stack_b)
 {
-	printf("rb\n");
+	write(1, "rb\n", 3);
 	rotate(stack_b, 0);
 }
 
 void	rr(t_list **stack_a, t_list **stack_b)
 {
-	printf("rr\n");
+	write(1, "rr\n", 3);
 	rotate(stack_a, 0);
 	rotate(stack_b, 0);
 }

@@ -19,6 +19,8 @@ int	get_max_position(t_list **stack)
 	int		pos;
 	int		count;
 
+	if (stack == NULL)
+		return (0); //maybe not !!!!!!!!!!
 	*stack = get_first_node(*stack);
 	tmp_node = *stack;
 	tmp_content = tmp_node->content;

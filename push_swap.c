@@ -19,6 +19,8 @@ int	*sort_arr(int *arr, int n)
 	int	tmp;
 
 	i = 0;
+	if (!arr)
+		return (NULL);
 	while (i < n)
 	{
 		j = 0;
@@ -57,6 +59,7 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 	int	*sorted_arr;
 	int	len;
 
+	//DO WE NEED TO CHECK ? if stack_a == NULL ????????????
 	(*stack_a) = get_first_node(*stack_a);
 	len = stack_len(*stack_a);
 	sorted_arr = (int *)malloc(sizeof(int) * len);
