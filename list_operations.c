@@ -53,8 +53,10 @@ void	rotate(t_list **stack, int reversed)
 {
 	t_list	*tmp;
 
+	if (stack == NULL)
+		return ;
 	*stack = get_first_node(*stack);
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	tmp = *stack;
 	if (!reversed)
