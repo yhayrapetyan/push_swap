@@ -50,7 +50,7 @@ static char	*ft_strndup(const char *str, int n)
 	return (copy);
 }
 
-static void	fill(char **res, char const *s, char c, int nb_words)
+static int	fill(char **res, char const *s, char c, int nb_words)
 {
 	int		i;
 	int		j;
@@ -66,10 +66,13 @@ static void	fill(char **res, char const *s, char c, int nb_words)
 		while (s[k + j] && (s[k + j] != c))
 			j++;
 		res[i] = ft_strndup(&s[k], j);
+		if (res[i] == NULL)
+			return (0);
 		i++;
 		k += j;
 	}
 	res[nb_words] = 0;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -89,6 +92,10 @@ char	**ft_split(char const *s, char c)
 	res = (char **)malloc(sizeof(char *) * (nb_words + 1));
 	if (res == NULL)
 		return (NULL);
-	fill(res, s, c, nb_words);
+	if (!fill(res, s, c, nb_words))
+	{
+		free_split(res);
+		return (NULL);
+	}
 	return (res);
 }
