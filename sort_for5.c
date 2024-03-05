@@ -45,7 +45,7 @@ void	push_min(t_list **stack_a, t_list **stack_b, int pos, int len)
 	{
 		while (pos > 0)
 		{
-			execute(stack_a, stack_b, "ra");
+			execute(stack_a, stack_b, "ra", 1);
 			pos--;
 		}
 	}
@@ -53,11 +53,11 @@ void	push_min(t_list **stack_a, t_list **stack_b, int pos, int len)
 	{
 		while (pos < len)
 		{
-			execute(stack_a, stack_b, "rra");
+			execute(stack_a, stack_b, "rra", 1);
 			pos++;
 		}
 	}
-	execute(stack_a, stack_b, "pb");
+	execute(stack_a, stack_b, "pb", 1);
 }
 
 void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b, int len)
@@ -80,7 +80,7 @@ void	sort_for5(t_list **stack_a, t_list **stack_b, int len)
 	sort_for3(stack_a, stack_b);
 	while (len > 3)
 	{
-		execute(stack_a, stack_b, "pa");
+		execute(stack_a, stack_b, "pa", 1);
 		len--;
 	}
 }

@@ -28,17 +28,17 @@ void	sort(t_list **stack_a, t_list **stack_b, int *ar, int arr_len)
 	{
 		if ((*stack_a)->content <= ar[i])
 		{
-			execute(stack_a, stack_b, "pb");
-			execute(stack_a, stack_b, "rb");
+			execute(stack_a, stack_b, "pb", 1);
+			execute(stack_a, stack_b, "rb", 1);
 			i++;
 		}
 		else if ((*stack_a)->content <= ar[i + step])
 		{
-			execute(stack_a, stack_b, "pb");
+			execute(stack_a, stack_b, "pb", 1);
 			i++;
 		}
 		else
-			execute(stack_a, stack_b, "ra");
+			execute(stack_a, stack_b, "ra", 1);
 		if (i + step >= arr_len)
 			step--;
 	}

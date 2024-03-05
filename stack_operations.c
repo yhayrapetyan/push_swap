@@ -12,21 +12,24 @@
 
 #include "push_swap.h"
 
-void	rra(t_list **stack_a)
+void	rra(t_list **stack_a, int f)
 {
-	write(1, "rra\n", 4);
+	if (f == 1)
+		write(1, "rra\n", 4);
 	rotate(stack_a, 1);
 }
 
-void	rrb(t_list **stack_b)
+void	rrb(t_list **stack_b, int f)
 {
-	write(1, "rrb\n", 4);
+	if (f == 1)
+		write(1, "rrb\n", 4);
 	rotate(stack_b, 1);
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b)
+void	rrr(t_list **stack_a, t_list **stack_b, int f)
 {
-	write(1, "rrr\n", 4);
+	if (f == 1)
+		write(1, "rrr\n", 4);
 	rotate(stack_a, 1);
 	rotate(stack_b, 1);
 }

@@ -13,9 +13,14 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -36,20 +41,20 @@ t_list	*add_node(t_list *node, int content);
 void	swap(t_list **stack);
 void	rotate(t_list **stack, int reversed);
 void	push(t_list **stack_a, t_list **stack_b);
-void	execute(t_list **stack_a, t_list **stack_b, char *command);
+void	execute(t_list **stack_a, t_list **stack_b, char *command, int f);
 
 // STACK OPERATIONS
-void	sa(t_list **stack_a);
-void	sb(t_list **stack_a);
-void	ss(t_list **stack_a, t_list **stack_b);
-void	pa(t_list **stack_a, t_list **stack_b);
-void	pb(t_list **stack_a, t_list **stack_b);
-void	ra(t_list **stack_a);
-void	rb(t_list **stack_b);
-void	rr(t_list **stack_a, t_list **stack_b);
-void	rra(t_list **stack_a);
-void	rrb(t_list **stack_b);
-void	rrr(t_list **stack_a, t_list **stack_b);
+void	sa(t_list **stack_a, int f);
+void	sb(t_list **stack_a, int f);
+void	ss(t_list **stack_a, t_list **stack_b, int f);
+void	pa(t_list **stack_a, t_list **stack_b, int f);
+void	pb(t_list **stack_a, t_list **stack_b, int f);
+void	ra(t_list **stack_a, int f);
+void	rb(t_list **stack_b, int f);
+void	rr(t_list **stack_a, t_list **stack_b, int f);
+void	rra(t_list **stack_a, int f);
+void	rrb(t_list **stack_b, int f);
+void	rrr(t_list **stack_a, t_list **stack_b, int f);
 
 
 // HELPERS
@@ -69,6 +74,8 @@ void	print_2stacks_len(t_list *stack_a, t_list *stack_b); // same
 // VALIDATION
 int		digit_len(char *str); //maybe need change to static if not, should include split functions
 int		is_valid_input(char *str);
+char	*cut_new_line(char	*command);
+int		is_valid_command(char *command);
 void	check_for_empty_string(char **str);
 void	ft_error(t_list *stack_a, char **str);
 void	check_for_dublicates(t_list *stack);
@@ -90,5 +97,12 @@ void	push_min(t_list **stack_a, t_list **stack_b, int pos, int len);
 void	selection_sort(t_list **stack_a, t_list **stack_b, int arr_len);
 void	sort(t_list **stack_a, t_list **stack_b, int *arr, int arr_len);
 void	push_2_minimums_from_stack(t_list **stack_a, t_list **stack_b, int len);
+
+// GET NEXT LINE
+char	*get_next_line(int fd);
+int		ft_strchri(char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*get_line(char *str);
+char	*get_new_left_str(char *str);
 
 #endif

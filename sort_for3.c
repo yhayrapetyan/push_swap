@@ -18,24 +18,24 @@ void	sort_for3(t_list **stack_a, t_list **stack_b)
 		return ;
 	if ((*stack_a)->content < (*stack_a)->next->content && \
 		(*stack_a)->content > (*stack_a)->next->next->content)
-		execute(stack_a, stack_b, "rra");
+		execute(stack_a, stack_b, "rra", 1);
 	else if ((*stack_a)->content < (*stack_a)->next->content && \
 		(*stack_a)->content < (*stack_a)->next->next->content)
 	{
-		execute(stack_a, stack_b, "rra");
-		execute(stack_a, stack_b, "sa");
+		execute(stack_a, stack_b, "rra", 1);
+		execute(stack_a, stack_b, "sa", 1);
 	}
 	else if ((*stack_a)->content > (*stack_a)->next->content && \
 		(*stack_a)->content < (*stack_a)->next->next->content)
-		execute(stack_a, stack_b, "sa");
+		execute(stack_a, stack_b, "sa", 1);
 	else if ((*stack_a)->content > (*stack_a)->next->content && \
 		(*stack_a)->content > (*stack_a)->next->next->content && \
 		(*stack_a)->next->content < (*stack_a)->next->next->content)
-		execute(stack_a, stack_b, "ra");
+		execute(stack_a, stack_b, "ra", 1);
 	else
 	{
-		execute(stack_a, stack_b, "sa");
-		execute(stack_a, stack_b, "rra");
+		execute(stack_a, stack_b, "sa", 1);
+		execute(stack_a, stack_b, "rra", 1);
 	}
 
 }

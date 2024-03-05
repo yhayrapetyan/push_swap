@@ -74,7 +74,7 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 		return ;
 	}
 	if (len == 2)
-		execute(stack_a, stack_b, "sa");
+		execute(stack_a, stack_b, "sa", 1);
 	else if (len == 3)
 		sort_for3(stack_a, stack_b);
 	else if (len <= 5)
