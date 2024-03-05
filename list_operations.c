@@ -93,12 +93,12 @@ void	execute(t_list **stack_a, t_list **stack_b, char *command)
 		ra(stack_a);
 	else if (ft_strcmp(command, "rb") == 0)
 		rb(stack_b);
-	else if(ft_strcmp(command, "rr") == 0)
+	else if (ft_strcmp(command, "rr") == 0)
 		rr(stack_a, stack_b);
 	else if (ft_strcmp(command, "rra") == 0)
 		rra(stack_a);
 	else if (ft_strcmp(command, "rrb") == 0)
 		rrb(stack_b);
-	else if(ft_strcmp(command, "rrr") == 0)
+	else if (ft_strcmp(command, "rrr") == 0)
 		rrr(stack_a, stack_b);
 }

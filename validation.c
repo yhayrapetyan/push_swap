@@ -77,7 +77,7 @@ void	check_for_empty_string(char **str)
 			j++;
 		if (j == ft_strlen(str[i]))
 		{
-			printf("Error\n");
+			write(2, "Error\n", 6);
 			exit(EXIT_FAILURE);
 		}
 		i++;
@@ -109,61 +109,4 @@ int	ft_check_atoi(const char *str, t_list *stack_a, char **split_result)
 	if ((result * ans) > 2147483647 || (result * ans) < -2147483648)
 		ft_error(stack_a, split_result);
 	return (result * ans);
-}
-
-int	digit_len(char *str)
-{
-	int	i;
-	int	flag;
-
-	i = 0;
-	flag = 0;
-	if (!str)
-		return (0);
-	while (*str)
-	{
-		if (*str == '0' && flag == 0)
-		{
-			str++;
-			continue ;
-		}
-		str++;
-		flag = 1;
-		i++;
-	}
-	return (i);
-}
-
-int	is_valid_input(char *str)
-{
-	// int	sign;
-
-	// sign = 1;
-	if (!str)
-		return (0);
-	if (digit_len(str) > 11)
-		return (0);
-	if (*str == '-')
-	{
-		// sign = -1;
-		str++;
-	}
-	while (*str)
-	{
-		if (!((*str >= '0' && *str <= '9') || ft_strchr("+-", *str)))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-void	ft_error(t_list *stack_a, char **str)
-{
-	clean_stack(stack_a);
-	if (str)
-		free_split(str);
-	// printf("Error\n");
-	write(2, "Error\n", 6);
-	// system("leaks push_swap");
-	exit(EXIT_FAILURE);
 }

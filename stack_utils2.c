@@ -27,5 +27,5 @@ t_list	*get_last_node(t_list *node)
 		return (NULL);
 	while (node->next)
 		node = node->next;
-	return node;
+	return (node);
 }

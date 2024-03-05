@@ -51,12 +51,13 @@ int	ft_pow(int nb, int power)
 
 int	ft_log2(unsigned int n)
 {
-    int	result;
+	int	result;
 
 	result = -1;
-    while (n) {
-        n >>= 1;
-        result++;
-    }
-    return (result);
+	while (n)
+	{
+		n >>= 1;
+		result++;
+	}
+	return (result);
 }

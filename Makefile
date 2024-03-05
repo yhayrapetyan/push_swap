@@ -7,6 +7,7 @@ SRC = 	my_helpers_NO-NORME.c \
 		stack_utils2.c \
 		stack_utils.c \
 		validation.c \
+		validation2.c \
 		push_swap.c \
 		sort_for3.c \
 		sort_for5.c \
