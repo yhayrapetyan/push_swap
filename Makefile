@@ -45,6 +45,7 @@ OBJS = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
+BONUS_NAME = checker
 RM = rm -f
 
 all: $(NAME)
@@ -56,8 +57,11 @@ $(OBJS): push_swap.h Makefile
 sanitize:
 	cc -fsanitize=address $(SRC) -o $(NAME)
 
+sanitize_bonus:
+	cc -fsanitize=address $(BONUS_SRC) -o $(BONUS_NAME)
+
 bonus:
-	$(CC) $(CFLAGS) $(BONUS_SRC) -o checker
+	$(CC) $(CFLAGS) $(BONUS_SRC) -o $(BONUS_NAME)
 
 .c.o:
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -66,7 +70,7 @@ clean:
 	@$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
