@@ -37,5 +37,4 @@ void	sort_for3(t_list **stack_a, t_list **stack_b)
 		execute(stack_a, stack_b, "sa", 1);
 		execute(stack_a, stack_b, "rra", 1);
 	}
-
 }

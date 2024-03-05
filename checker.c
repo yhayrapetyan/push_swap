@@ -35,9 +35,11 @@ int	main(int ac, char **av)
 		else
 			execute(&stack_a, &stack_b, cut_new_line(command), 0); //maybe need to execute without write
 	}
-	print_2stacks(stack_a, stack_b);
-	if (is_sorted(stack_a))
+	// print_2stacks(stack_a, stack_b);
+	if (is_sorted(stack_a) == 1 && stack_len(get_first_node(stack_b)) == 0)
 		printf("OK\n");
+	else
+		printf("KO\n");
 	clean_stack(stack_a);
 	clean_stack(stack_b);
 	return (0);

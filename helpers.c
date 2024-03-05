@@ -40,19 +40,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-int	is_sorted(t_list *stack)
-{
-	if (stack == NULL || stack->next == NULL)
-		return (1);
-	while (stack && stack->next)
-	{
-		if (stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
 int	ft_strchr(const char *s, int c)
 {
 	int	i;

@@ -29,3 +29,17 @@ t_list	*get_last_node(t_list *node)
 		node = node->next;
 	return (node);
 }
+
+int	is_sorted(t_list *stack)
+{
+	stack = get_first_node(stack);
+	if (stack == NULL)
+		return (1);
+	while (stack && stack->next)
+	{
+		if (stack->content > stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
