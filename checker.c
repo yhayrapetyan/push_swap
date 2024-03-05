@@ -28,7 +28,11 @@ void	get_input(char *command, t_list **stack_a, t_list **stack_b)
 		if (command == NULL)
 			break ;
 		if (!is_valid_command(command))
+		{
+			free(command);
+			get_next_line(-1);
 			ft_error(*stack_a, NULL);
+		}
 		else
 		{
 			command = cut_new_line(command);
@@ -36,6 +40,7 @@ void	get_input(char *command, t_list **stack_a, t_list **stack_b)
 			free(command);
 		}
 	}
+	get_next_line(-1);// works correct without this
 }
 
 int	main(int ac, char **av)
@@ -59,7 +64,7 @@ int	main(int ac, char **av)
 	clean_stack(stack_b);
 	// if (command == NULL)
 	// 	printf("FDSFDSFSDF");
-	// free(command);
+	free(command);
 	// system("leaks checker");
 	return (0);
 }
