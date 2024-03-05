@@ -56,7 +56,6 @@ void	rra(t_list **stack_a, int f);
 void	rrb(t_list **stack_b, int f);
 void	rrr(t_list **stack_a, t_list **stack_b, int f);
 
-
 // HELPERS
 int		ft_strlen(char *str);
 int		ft_sqrt(int nb);
@@ -72,7 +71,7 @@ void	print_2stacks(t_list *stack_a, t_list *stack_b); // need to comment !!!
 void	print_2stacks_len(t_list *stack_a, t_list *stack_b); // same
 
 // VALIDATION
-int		digit_len(char *str); //maybe need change to static if not, should include split functions
+int		digit_len(char *str);
 int		is_valid_input(char *str);
 char	*cut_new_line(char	*command);
 int		is_valid_command(char *command);

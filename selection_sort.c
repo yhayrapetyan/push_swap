@@ -20,7 +20,7 @@ int	get_max_position(t_list **stack)
 	int		count;
 
 	if (stack == NULL)
-		return (0); //maybe not !!!!!!!!!!
+		return (0);
 	*stack = get_first_node(*stack);
 	tmp_node = *stack;
 	tmp_content = tmp_node->content;
@@ -41,7 +41,7 @@ int	get_max_position(t_list **stack)
 
 void	push_max(t_list **stack_a, t_list **stack_b, int pos, int len)
 {
-	if (pos <= (len + 1) / 2 )
+	if (pos <= (len + 1) / 2)
 	{
 		while (pos > 0)
 		{

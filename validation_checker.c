@@ -29,7 +29,6 @@ char	*cut_new_line(char	*command)
 	new_command[i] = '\0';
 	free(command);
 	return (new_command);
-
 }
 
 int	is_valid_command(char *command)

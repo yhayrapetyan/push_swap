@@ -47,7 +47,7 @@ void	check_for_dublicates(t_list *stack)
 	t_list	*tmp_node;
 
 	if (!stack)
-		return ; // maybe not?
+		return ;
 	stack = get_first_node(stack);
 	tmp_node = stack;
 	while (tmp_node)
@@ -73,7 +73,7 @@ void	check_for_empty_string(char **str)
 	while (str[i])
 	{
 		j = 0;
-		while (str[i][j] && ft_strchr(" \n\t\f\v\r", str[i][j])) //maybe more
+		while (str[i][j] && ft_strchr(" \n\t\f\v\r", str[i][j]))
 			j++;
 		if (j == ft_strlen(str[i]))
 		{
