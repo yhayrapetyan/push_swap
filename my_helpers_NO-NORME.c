@@ -19,25 +19,15 @@ void	print_stack(t_list *stack)
 	while (stack)
 	{
 		printf("%d", stack->content);
-		// if (stack->content < 0)
-		// {
-		// 	stack->content *= -1;
-		// 	printf("minus");
-		// }
-		// while (i < stack->content)
-		// {
-		// 	printf("*");
-		// 	i++;
-		// }
 		printf("\n");
 		stack = stack->next;
 	}
 }
 
-void	print_stars(int	len)
+void	print_stars(int len)
 {
-	int	i;
-	long long cpy;
+	int			i;
+	long long	cpy;
 
 	i = 0;
 	cpy = (long long)len;

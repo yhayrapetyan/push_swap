@@ -40,8 +40,7 @@ BONUS_SRC =	my_helpers_NO-NORME.c \
 			sort.c \
 
 OBJS = $(SRC:.c=.o)
-# BONUS_OBJS = $(BONUS_SRC:.c=.o)
-# BONUS_OBJS += $(OBJS)
+BONUS_OBJS = $(BONUS_SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
@@ -53,6 +52,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 
 $(OBJS): push_swap.h Makefile
+$(BONUS_OBJS): push_swap.h Makefile
 
 sanitize:
 	cc -fsanitize=address $(SRC) -o $(NAME)
@@ -60,8 +60,8 @@ sanitize:
 sanitize_bonus:
 	cc -fsanitize=address $(BONUS_SRC) -o $(BONUS_NAME)
 
-bonus:
-	$(CC) $(CFLAGS) $(BONUS_SRC) -o $(BONUS_NAME)
+bonus: $(BONUS_OBJS)
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
 
 .c.o:
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
