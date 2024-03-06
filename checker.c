@@ -40,7 +40,7 @@ void	get_input(char *command, t_list **stack_a, t_list **stack_b)
 			free(command);
 		}
 	}
-	get_next_line(-1);// works correct without this
+	get_next_line(-1);
 }
 
 int	main(int ac, char **av)
@@ -49,7 +49,6 @@ int	main(int ac, char **av)
 	t_list	*stack_b;
 	char	*command;
 
-// NEED TO CHECK LEAKS !!!!!!!!!!!!!!
 	stack_a = NULL;
 	stack_b = NULL;
 	command = NULL;
@@ -57,14 +56,11 @@ int	main(int ac, char **av)
 		return (0);
 	check_for_empty_string(av);
 	fill_stack(&stack_a, ac, av);
-	check_for_dublicates(stack_a); //maybe need to give &stack_a for leaks
+	check_for_dublicates(stack_a);
 	get_input(command, &stack_a, &stack_b);
 	check_result(stack_a, stack_b);
 	clean_stack(stack_a);
 	clean_stack(stack_b);
-	// if (command == NULL)
-	// 	printf("FDSFDSFSDF");
 	free(command);
-	// system("leaks checker");
 	return (0);
 }

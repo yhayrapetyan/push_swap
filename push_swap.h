@@ -57,18 +57,18 @@ void	rrb(t_list **stack_b, int f);
 void	rrr(t_list **stack_a, t_list **stack_b, int f);
 
 // HELPERS
-int		ft_strlen(char *str);
 int		ft_sqrt(int nb);
-int		ft_pow(int nb, int power);
-int		ft_log2(unsigned int n);
+int		ft_strlen(char *str);
 void	free_split(char **str);
+int		ft_log2(unsigned int n);
+void	print_stack(t_list *stack);//passed without this
 int		is_sorted(t_list *stack);
-void	print_stack(t_list *stack);
+int		ft_pow(int nb, int power);
 int		ft_strchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
 int		ft_strcmp(const char *s1, const char *s2);
-void	print_2stacks(t_list *stack_a, t_list *stack_b); // need to comment !!!
-void	print_2stacks_len(t_list *stack_a, t_list *stack_b); // same
+void	print_2stacks(t_list *stack_a, t_list *stack_b);//passed without this
+void	print_2stacks_len(t_list *stack_a, t_list *stack_b);// passed without this
 
 // VALIDATION
 int		digit_len(char *str);
@@ -76,10 +76,10 @@ int		is_valid_input(char *str);
 char	*cut_new_line(char	*command);
 int		is_valid_command(char *command);
 void	check_for_empty_string(char **str);
-void	ft_error(t_list *stack_a, char **str);
 void	check_for_dublicates(t_list *stack);
-int		ft_check_atoi(const char *str, t_list *stack_a, char **split_result);
+void	ft_error(t_list *stack_a, char **str);
 void	fill_stack(t_list **stack_a, int ac, char **av); // also stack operation
+int		ft_check_atoi(const char *str, t_list *stack_a, char **split_result);
 
 // SORT
 int		get_optimal_step(int len);

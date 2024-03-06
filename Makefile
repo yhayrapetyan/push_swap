@@ -1,5 +1,5 @@
-SRC = 	my_helpers_NO-NORME.c \
-		stack_operations3.c \
+SRC =	stack_operations3.c \
+		my_helpers_NO-NORME.c \
 		stack_operations2.c \
 		stack_operations.c \
 		list_operations.c \
@@ -17,8 +17,8 @@ SRC = 	my_helpers_NO-NORME.c \
 		main.c \
 		sort.c
 
-BONUS_SRC =	my_helpers_NO-NORME.c \
-			get_next_line_utils.c \
+BONUS_SRC = get_next_line_utils.c \
+			my_helpers_NO-NORME.c \
 			validation_checker.c \
 			stack_operations3.c \
 			stack_operations2.c \
@@ -47,6 +47,8 @@ NAME = push_swap
 BONUS_NAME = checker
 RM = rm -f
 
+# paased project without satinize targets and my_helpers functions
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -60,8 +62,8 @@ sanitize:
 sanitize_bonus:
 	cc -fsanitize=address $(BONUS_SRC) -o $(BONUS_NAME)
 
-bonus: $(BONUS_OBJS)
-	@$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
+
+bonus: $(BONUS_OBJS) $(BONUS_NAME)
 
 .c.o:
 	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -74,4 +76,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re sanitize
+$(BONUS_NAME): $(BONUS_OBJS)
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME)
+
+.PHONY: all clean fclean re sanitize bonus

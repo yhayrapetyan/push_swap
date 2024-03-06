@@ -22,10 +22,13 @@ void	free_split(char **str)
 	while (str[i])
 	{
 		free(str[i]);
+		str[i] = NULL;
 		i++;
 	}
 	free(str[i]);
+	str[i] = NULL;
 	free(str);
+	str = NULL;
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
