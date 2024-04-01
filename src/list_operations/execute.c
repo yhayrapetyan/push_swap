@@ -37,4 +37,3 @@ void	execute(t_list **stack_a, t_list **stack_b, char *command, int f)
 	else if (ft_strcmp(command, "rrr") == 0)
 		rrr(stack_a, stack_b, f);
 }
-

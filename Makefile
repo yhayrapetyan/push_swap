@@ -158,7 +158,6 @@ print_info: print_name
 	@printf "%b" "$(BLUE)Name: $(GREEN)$(NAME)\n"
 	@printf "%b" "$(BLUE)Uname: $(GREEN)$(UNAME)\n"
 	@printf "%b" "$(BLUE)C Flags: $(GREEN)$(CFLAGS)\n"
-	@printf "%b" "$(BLUE)Lib Flags: $(GREEN)$(LIB_FLAGS)\n"
 	@printf "%b" "$(BLUE)Src Count: $(GREEN)$(SRC_COUNT_TOT)\n"
 
 print_name:

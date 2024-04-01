@@ -39,4 +39,3 @@ void	rotate(t_list **stack, int reversed)
 		tmp->prev = *stack;
 	}
 }
-
