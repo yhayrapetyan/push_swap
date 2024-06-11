@@ -132,10 +132,10 @@ sanitize:
 	cc -fsanitize=address $(SRC) -o $(NAME)
 
 sanitize_bonus:
-	cc -fsanitize=address $(BONUS_SRC) -o $(BONUS_NAME)
+	cc -fsanitize=address -I $(HEADERS_DIR) $(BONUS_SRC) -o $(BONUS_NAME)
 
 
-bonus: print_info $(BONUS_OBJS) $(BONUS_NAME)
+bonus: print_info $(BONUS_NAME)
 
 .c.o:
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
